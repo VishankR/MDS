@@ -58,7 +58,7 @@ public class Data {
         patPresFill.setFill_number(0);
         patPresFill.setPickup_date(new Date());
         //patPresFill.setPres(pres);
-        patPresFill.setRefill_number(0);
+       // patPresFill.setRefill_number(0);
         return patPresFill;
     }
     public static List<PrescriptionFill> getDummyPrescriptionFillList(){
@@ -68,7 +68,7 @@ public class Data {
         patPresFill.setDispensed_quantity(30);
         patPresFill.setFill_number(0);
         patPresFill.setPickup_date(new Date());
-        patPresFill.setRefill_number(0);
+        //patPresFill.setRefill_number(0);
         temp.add(patPresFill);
         return temp;
     }
@@ -79,7 +79,7 @@ public class Data {
         patPresFill.setDispensed_quantity(30);
         patPresFill.setFill_number(2);
         patPresFill.setPickup_date(new Date());
-        patPresFill.setRefill_number(1);
+       // patPresFill.setRefill_number(1);
         patPresFill.setPres(pres);
         temp.add(patPresFill);
         return temp;
