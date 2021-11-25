@@ -1,6 +1,7 @@
 package com.mds.commonservices.controllers;
 
 import com.mds.commonservices.entities.Patient;
+import com.mds.commonservices.proxies.PatientServicesProxy;
 import com.mds.commonservices.services.CommonPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +13,11 @@ import java.util.List;
 public class PatientDetails {
     @Autowired
     CommonPatientService patientService;
+    @Autowired
+    PatientServicesProxy patientServiceProxy;
     @GetMapping("/")
     public List<Patient> getPatients(){
-        return patientService.getPatients();
+        return patientServiceProxy.getAllPatients();
     }
     @GetMapping("/delete")
     public List<Patient> deletePatient(){
