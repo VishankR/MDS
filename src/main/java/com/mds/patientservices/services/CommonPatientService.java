@@ -21,4 +21,7 @@ public class CommonPatientService {
     	jpaPatientRepo.deleteById(7);
     	return getPatients();
     }
+    public void addPatient(Patient patient) {
+    	jpaPatientRepo.save(patient);
+    }
 }

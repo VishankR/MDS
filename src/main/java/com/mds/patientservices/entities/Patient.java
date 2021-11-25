@@ -12,6 +12,40 @@ import org.hibernate.annotations.Formula;
 //JPA Annotation
 @Table(name="patient")
 public class Patient {
+	//All JPA Annotation
+	@ElementCollection
+	@CollectionTable(name = "patient_address", joinColumns = @JoinColumn(name="patient_id"))
+	@AttributeOverrides({@AttributeOverride(name = "street", column = @Column(name = "street")), @AttributeOverride(name = "city", column = @Column(name="city")),
+		@AttributeOverride(name = "state", column = @Column(name="state"))})
+	private List<PatientAddress> address;
+
+	//JPA Annotation
+	@Column(name="dob", nullable=false)
+	//JPA Annotation
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date birthDate;
+	
+	//JPA Annotation
+	@Embedded
+	@AttributeOverrides({@AttributeOverride(name = "home_contact", column = @Column(name = "home_contact")),
+			@AttributeOverride(name = "mobile_contact", column = @Column(name="mobile_contact")),
+			@AttributeOverride(name = "office_contact", column = @Column(name="office_contact"))})
+	private Contact contact;
+	
+	private String first_name;
+	
+	private String gender;
+
+	private String last_name;
+	
+	private String mail;
+	
+	//hibernate annotation
+	/*@Formula("lower(datediff(curDate() - birthDate)/365)")
+	private int age;*/
+	
+	private String middle_name;
+
 	//JPA Annotation
 	@Id
 	/*
@@ -30,44 +64,10 @@ public class Patient {
 	//JPA Annotation
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int patient_id;
-
-	private String first_name;
-	
-	private String last_name;
-	
-	private String middle_name;
-	
-	private String gender;
-
-	//JPA Annotation
-	@Column(name="dob", nullable=false)
-	//JPA Annotation
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date birthDate;
-	
-	private String mail;
-	
-	//hibernate annotation
-	/*@Formula("lower(datediff(curDate() - birthDate)/365)")
-	private int age;*/
 	
 	//JPA Annotation
 	@Transient
 	private boolean valid;
-
-	//JPA Annotation
-	@Embedded
-	@AttributeOverrides({@AttributeOverride(name = "home_contact", column = @Column(name = "home_contact")),
-			@AttributeOverride(name = "mobile_contact", column = @Column(name="mobile_contact")),
-			@AttributeOverride(name = "office_contact", column = @Column(name="office_contact"))})
-	private Contact contact;
-	
-	//All JPA Annotation
-	@ElementCollection
-	@CollectionTable(name = "patient_address", joinColumns = @JoinColumn(name="patient_id"))
-	@AttributeOverrides({@AttributeOverride(name = "street", column = @Column(name = "street")), @AttributeOverride(name = "city", column = @Column(name="city")),
-		@AttributeOverride(name = "state", column = @Column(name="state"))})
-	private List<PatientAddress> address;
 
 	//If I use "mappedBy" attribute in owning entity then we can suppress one additional update query which is triggered if
 	//I use "mappedBy" attribute in non-owning entity in a Bi-Directional relationship.
@@ -92,24 +92,24 @@ public class Patient {
 		return address;
 	}
 
-	public void setAddress(List<PatientAddress> address) {
-		this.address = address;
+	public Date getBirthDate() {
+		return birthDate;
 	}
 
 	public Contact getContact() {
 		return contact;
 	}
 
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public boolean isValid() {
-		return valid;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setValid(boolean valid) {
-		this.valid = valid;
+	public String getLast_name() {
+		return last_name;
 	}
 
 /*	public int getAge() {
@@ -120,60 +120,60 @@ public class Patient {
 		this.age = age;
 	}*/
 
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public String getMail() {
+		return mail;
 	}
 
 	public String getMiddle_name() {
 		return middle_name;
 	}
 
-	public void setMiddle_name(String middle_name) {
-		this.middle_name = middle_name;
+	public int getPatient_id() {
+		return patient_id;
 	}
 
-	public String getGender() {
-		return gender;
+	public boolean isValid() {
+		return valid;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public Date getBirthDate() {
-		return birthDate;
+	public void setAddress(List<PatientAddress> address) {
+		this.address = address;
 	}
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
-	public String getMail() {
-		return mail;
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-		
-	public int getPatient_id() {
-		return patient_id;
-	}
 
+	public void setMiddle_name(String middle_name) {
+		this.middle_name = middle_name;
+	}
+		
 	public void setPatient_id(int patient_id) {
 		this.patient_id = patient_id;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 	@Override
 	public String toString() {
