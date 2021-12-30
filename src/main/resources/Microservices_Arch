@@ -1,0 +1,66 @@
+Feign             - It helps invoking a service. So we add "Open Feign" dependency in the project from which we want to hit another service. We will 
+                    have to create the proxy for that service. For that create a interface, with annotation @FeignClient(name="service name"). 
+                    Create different methods on the basis of endpoints of that service. Add @EnableFeignClients just above @SpringBootApplication 
+                    annotation.
+                    
+                    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+					<dependency>
+					    <groupId>org.springframework.cloud</groupId>
+					    <artifactId>spring-cloud-starter-openfeign</artifactId>
+					    <version>3.1.0</version>
+					</dependency>
+                    
+                    
+Naming Server     - Create a new project with dependency "Eureka Server (Spring Cloud Discovery)". Add @EnableEurekaServer just above 
+                    @SpringBootApplication annotation. All the Instance of all the services will register themselves with this Naming Service.
+                    
+                    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server -->
+					<dependency>
+					    <groupId>org.springframework.cloud</groupId>
+					    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+					    <version>3.1.0</version>
+					</dependency>
+					
+==> Add Netflix Eureka Client in Every Microservice that you want to register with our naming service. This dependency also includes Loadbalancer
+    so open Feign uses this to distribute load in the instances of services (eureka discovery clients).
+    
+	<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
+	<dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+	    <version>3.1.0</version>
+	</dependency>
+
+API Gateway Service - Create a new project with dependency "Gateway (Spring Cloud Routing)". It gives a single Entry Point to outside world. It 
+                      makes easy to write common cross cutting concerns (Security Concerns/Validation Concerns/Authorization/Authentication) 
+                      at a single point.             
+                      Enable a property in application.property of this project -
+                      spring.cloud.gateway.discovery.locator.enabled=true
+                      so that it could discover other services by talking to Eureka Service. It has eureka client in its classpath so it is a eureka
+                      client as well and ask eureka server for the address of other services.
+                      
+                    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-gateway -->
+					<dependency>
+					    <groupId>org.springframework.cloud</groupId>
+					    <artifactId>spring-cloud-starter-gateway</artifactId>
+					    <version>3.1.0</version>
+					</dependency>
+
+Circuit Breaker     - It is used to return a fallback response in case any microservice is down. It is also used to reduce calls hitting a particular
+                      service (load). It is used to implement a functionality in which it can retry requests in case of temporary failures. It is 
+                      also used in rate limiting ( allow only certain number of calls to a specific microservice in a specific period of time). 
+                      Add below depedency in the desired microservice and create the controllers.
+					<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
+					<dependency>
+					    <groupId>org.springframework.boot</groupId>
+					    <artifactId>spring-boot-starter-aop</artifactId>
+					    <version>2.6.2</version>
+					</dependency>
+					<!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot2 -->
+					<dependency>
+					    <groupId>io.github.resilience4j</groupId>
+					    <artifactId>resilience4j-spring-boot2</artifactId>
+					    <version>1.7.1</version>
+					</dependency>
+					
+					
