@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.mds.commonservices.entities.Patient;
+import com.mds.entities.Patient;
 
 @FeignClient(name="PatientServices")
 public interface PatientServicesProxy {
