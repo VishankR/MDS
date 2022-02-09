@@ -1,14 +1,15 @@
 package com.mds.patientservices.controllers;
 
-import com.mds.patientservices.entities.Patient;
-import com.mds.patientservices.services.CommonPatientService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.mds.entities.Patient;
+import com.mds.patientservices.services.CommonPatientService;
 
 @RestController
 public class PatientDetails {

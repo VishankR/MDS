@@ -1,12 +1,13 @@
 package com.mds.patientservices.services;
 
-import com.mds.patientservices.entities.Patient;
-import com.mds.patientservices.repositories.CustomPatientRepo;
-import com.mds.patientservices.repositories.JpaPatientRepo;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.mds.entities.Patient;
+import com.mds.patientservices.repositories.CustomPatientRepo;
+import com.mds.patientservices.repositories.JpaPatientRepo;
 
 @Service
 public class CommonPatientService {

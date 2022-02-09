@@ -1,11 +1,13 @@
 package com.mds.patientservices.mockData;
 
-import com.mds.patientservices.entities.*;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import com.mds.entities.Contact;
+import com.mds.entities.Patient;
+import com.mds.entities.PatientAddress;
 
 public class Data {
     public static PatientAddress getDummyPatientAddress(){
@@ -61,7 +63,7 @@ public class Data {
 	 */
     public static Contact getDummyPatientContact(){
         Contact patContact = new Contact();
-        patContact.setMobile_contact("8510964757");
+        patContact.setMobileContact("8510964757");
         return patContact;
     }
     public static Patient getDummyPatient(){
@@ -70,8 +72,8 @@ public class Data {
         //pat.setAge(25);
         pat.setBirthDate(new Date(1998, Calendar.JANUARY, 5));
         pat.setContact(getDummyPatientContact());
-        pat.setFirst_name("Vishank");
-        pat.setLast_name("Rajput");
+        pat.setFirstName("Vishank");
+        pat.setLastName("Rajput");
         pat.setGender("Male");
         pat.setContact(getDummyPatientContact());
         pat.setMail("vishankkumar@gmail.com");

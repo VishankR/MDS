@@ -1,11 +1,15 @@
 package com.mds.patientservices.repositories;
 
-import com.mds.patientservices.entities.Patient;
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
+import com.mds.entities.Patient;
 
 @Repository
 /*@NamedQueries(value = {
