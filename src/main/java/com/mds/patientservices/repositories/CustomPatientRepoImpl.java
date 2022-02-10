@@ -24,7 +24,7 @@ private EntityManager entityManager;
     public List<Patient> findPatientByFirstNameAndLastName(String firstName, String lastName) {
         //Session session  = sessionFactory.getCurrentSession();
         //Query query = session.createQuery("from Patient where first_name=:firstName and last_name=:lastName");
-        Query query = entityManager.createQuery("select p from Patient as p where p.first_name=:firstName and p.last_name=:lastName");
+        Query query = entityManager.createQuery("select p from Patient as p where p.firstName=:firstName and p.lastName=:lastName");
         query.setParameter("firstName", firstName);
         query.setParameter("lastName", lastName);
         List<Object> generalizedPatientList = query.getResultList();

@@ -1,20 +1,12 @@
 /*
  * package com.mds.patientservices.app;
  * 
- * import com.mds.patientservices.entities.Patient; import
- * com.mds.patientservices.mockData.Data; import
- * com.mds.patientservices.utils.HibernateUtil;
- * 
  * import org.hibernate.Session; import org.hibernate.Transaction;
  * 
- * import java.util.List;
- * 
- * import javax.persistence.EntityManager; import
- * javax.persistence.PersistenceContext;
- * 
+ * import com.mds.patientservices.mockData.Data; import
+ * com.mds.patientservices.utils.HibernateUtil;
  * 
  * public class Application { public static void main(String[] args) {
- * 
  * 
  * Session session = HibernateUtil.getSessionFactory().openSession();
  * Transaction tx = session.beginTransaction();
@@ -33,6 +25,7 @@
  * Data.getDummyPrescriptionFillListWithPrescription(pres);
  * presFillList.forEach(session::save); Patient p = session.get(Patient.class,
  * 7); System.out.println(p.toString());
+ * 
  * 
  * tx.commit(); session.close();
  * 

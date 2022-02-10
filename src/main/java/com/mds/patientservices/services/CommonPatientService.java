@@ -16,7 +16,7 @@ public class CommonPatientService {
     @Autowired
     JpaPatientRepo jpaPatientRepo;
     public List<Patient> getPatients(){
-        return customPatRepo.findPatientByFirstNameAndLastName("Vishank", "Rajput");
+        return jpaPatientRepo.findAll();
     }
     public List<Patient> deletePatient(){
     	jpaPatientRepo.deleteById(7);
