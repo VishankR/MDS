@@ -27,7 +27,7 @@ public class PrescriptionDTO {
 	
 	private int prescriptionId;
 	
-	private List<PrescriptionFillDTO> presFill;
+	private List<PrescriptionFillDTO> presFillList;
 	 
 	private int refillQuantity;
 

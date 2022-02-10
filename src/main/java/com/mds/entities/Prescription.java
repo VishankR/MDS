@@ -46,7 +46,7 @@ public class Prescription {
 	private int prescriptionId;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "pres")
-	private List<PrescriptionFill> presFill;
+	private List<PrescriptionFill> presFillList;
 	
 	@Column(name = "refill_quantity")
 	private int refillQuantity;

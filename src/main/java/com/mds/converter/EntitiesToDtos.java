@@ -1,7 +1,7 @@
 package com.mds.converter;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.mds.dtos.ContactDTO;
 import com.mds.dtos.PatientAddressDTO;
@@ -14,9 +14,10 @@ import com.mds.entities.PatientAddress;
 import com.mds.entities.Prescription;
 import com.mds.entities.PrescriptionFill;
 
+@Component
 public class EntitiesToDtos {
-	@Autowired
-	ModelMapper modelMapper;
+	
+	ModelMapper modelMapper = new ModelMapper();;
 	
 	public ContactDTO getContactDTOFromEntity(Contact contact) {
 		return modelMapper.map(contact, ContactDTO.class);
